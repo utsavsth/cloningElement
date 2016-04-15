@@ -1,0 +1,16 @@
+﻿@model CloningElements.Models.Gift
+
+<div class="editorRow">
+    @*Item: @Html.TextBoxFor(x => x.Name)
+    Value: @Html.TextBoxFor(x => x.Price, new { size = 4 })*@
+
+   @using(Html.BeginCollectionItem("gifts")) 
+    { 
+       <label>Item:</label>
+        @Html.TextBoxFor(x => x.Name)
+       <label>Price:</label>
+        @Html.TextBoxFor(x => x.Price, new { size = 4 })
+    }
+</div>
+
+@*Install-Package BeginCollectionItem*@

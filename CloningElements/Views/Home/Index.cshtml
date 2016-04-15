@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CloningElements.Models.Gift>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gift List</h2>
+What do you want for your birthday?
+ 
+@using (Html.BeginForm())
+{ 
+    <div id="editorRows">
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("_GiftEditorRow", item);
+        }
+    </div>@*
+    @Html.ActionLink("Add another...", "BlankEditorRow", null, new { id = "addItem" })
+    *@
+    <a href="" id="addRow">Add another..</a>
+    <input type="submit" value="Finished" />
+}
+
+<script src="~/Scripts/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    $("#addRow").on('click', function () {
+
+        $.ajax({
+            async: false,
+            dataType : "html",
+            url: '/Home/BlankEditorRow'
+        }).success(function (partialView) {
+            console.log(partialView);
+            $('#editorRows').append(partialView);
+
+        }).error(function (error) {
+            debugger
+        });
+    });
+</script>

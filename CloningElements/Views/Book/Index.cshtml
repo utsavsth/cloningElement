@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CloningElements.Models.BookViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="dl-horizontal" id="booksContainer">
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(b => b.Title)</td>
+            <td>@Html.DisplayNameFor(model => model.Author)</td>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var book in Model)
+            {
+            <tr>
+                <td class="dl-horizontal">
+                    @Html.TextBoxFor(b => book.Title)
+                </td>
+                <td>
+                    @Html.TextBoxFor(b => book.Author)
+                </td>
+            </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td></td>
+            </tr>
+        }
+    </table>
+</div>
